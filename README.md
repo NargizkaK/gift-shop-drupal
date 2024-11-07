@@ -18,7 +18,7 @@ To see similar projects with additional services, please visit https://github.co
 ## Requirements
 
 * [docker](https://docs.docker.com/install/)
-* [pygmy-go](https://www.github.com/pygmystack/pygmy)
+* [pygmy](https://www.github.com/pygmystack/pygmy)
 
 **OR**
 
@@ -32,16 +32,28 @@ To see similar projects with additional services, please visit https://github.co
     git clone https://github.com/lagoon-examples/drupal-base.git drupal-base && cd $_
     ```
 
-2. Make sure you don't have anything running on port 80 on the host machine (like a web server) then run `pygmy-go up`
+2. Make sure you don't have anything running on port 80 on the host machine (like a web server) then run `pygmy`
 
 3. Build and start the build images:
 
     ```bash
-    docker-compose up -d
-    docker-compose exec cli composer install
+    docker compose up -d
+    docker compose exec cli composer install
     ```
 
-4. Visit the new site @ `http://drupal-base.docker.amazee.io`
+4. Launch your CLI to run composer & drush commands:
+
+    ```bash
+    docker compose exec cli bash
+    ```
+
+5. Install your Drupal site with Drush Site Install:
+
+    ```bash
+    drush si -y
+    ```
+
+6. Visit the new site @ `http://.gift-shop-drupal.docker.amazee.io`
 
 * If any steps fail, you're safe to rerun from any point.
 Starting again from the beginning will just reconfirm the changes.
@@ -72,7 +84,7 @@ lando start
 lando drush si -y
 ```
 
-6. Visit the new site @ `http://drupal-base.lndo.site`
+6. Visit the new site @ `http://gift-shop-drupal.lndo.site`
  
 7. For more information on how to configure your site, check out the [documentation](https://docs.lando.dev/config/lagoon.html).
 
